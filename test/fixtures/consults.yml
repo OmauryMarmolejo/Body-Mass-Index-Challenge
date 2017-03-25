@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  height: 
+  mass: 
+  body_mass: 
+
+two:
+  height: 
+  mass: 
+  body_mass: 
