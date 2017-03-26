@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h3>New consult</h3>
+    <%= form_for(@consult) do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+       <div class="form=group">
+         <%= f.text_field :height, placeholder: "Height", type: "number", min:"0", class: "form-control input"%>
+       </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form=group">
+          <%= f.text_field :mass , placeholder: "Mass", type: "number", min:"0", class: "form-control input" %>
+        </div>
+      </div>
+    </div>
+    <div class= "row">
+      <div class= "col=md=12">
+        <%= f.submit class: "btn btn-secondary pull-right"%>
+        <p id ="mass_body"></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+

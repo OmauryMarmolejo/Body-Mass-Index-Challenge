@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170325205110) do
 
   create_table "consults", force: :cascade do |t|
@@ -18,6 +19,19 @@ ActiveRecord::Schema.define(version: 20170325205110) do
     t.integer "body_mass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+ActiveRecord::Schema.define(version: 20170325220301) do
+
+  create_table "consults", force: :cascade do |t|
+    t.float "height"
+    t.float "mass"
+    t.float "body_mass"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "{:foreign_key=>true}_id"
+    t.index ["{:foreign_key=>true}_id"], name: "index_consults_on_{:foreign_key=>true}_id"
+>>>>>>> feature/consults
   end
 
   create_table "users", force: :cascade do |t|
