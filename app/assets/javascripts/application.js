@@ -14,3 +14,12 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//
+
+//function calculateBMI(){
+  //var height = document.getElementById("consult_height").value;
+  //var mass = document.getElementById("consult_mass").value;
+
+  //mass_body = (mass/((height/100)*(height/100));
+  //document.getElementById("mass_body").innerHTML = mass_body;
+//}

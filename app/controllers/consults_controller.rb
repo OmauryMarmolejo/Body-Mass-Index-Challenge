@@ -3,7 +3,7 @@ include ConsultsHelper
 #before_action :find_consults, only: [:edit, :update, :show, :delete]
 before_action :authenticate_user!
   def index
-    @consults = Consult.all
+    @consults = current_user.consult
   end
 
   def new
@@ -16,11 +16,21 @@ before_action :authenticate_user!
 
   def create
     @consult = current_user.consult.new(consult_params)
+    calculate
     if @consult.save
       redirect_to root_path
     else
       render 'new'
     end
+  end
+  def update
+    @consult = Consult.find(params[:id])
+    @consult.update(consult_params)
+    redirec_to root_path
+  end
+
+  def edit
+    @consult = Consult.find(params[:id])
   end
 
   def destroy
@@ -28,4 +38,6 @@ before_action :authenticate_user!
     @consult.destroy
     redirect_to root_path
   end
+
 end
+
