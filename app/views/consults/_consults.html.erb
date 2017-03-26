@@ -9,7 +9,7 @@
             <th>Weight</th>
             <th>BMI</th>
             <th>Date</th>
-            <th>Delete</th>
+            <th>Category</th>
           </tr>
         </thead>
         <tbody>
@@ -18,9 +18,22 @@
             <td><%= consult.height %> cm</td>
             <td><%= consult.mass %> kg</td>
             <td><%= "%.2f" % consult.body_mass %></td>
-            <td><%= consult.created_at.strftime("%Y-%m-%d")%></td>
-            <td> <%= link_to "Delete", root_path(@consult), method: :delete, data: {confirm: "Really delete the consult?"} %></td>
+            <td><%= consult.created_at.strftime("%Y-%m-%d") %></td>
+           <% if consult.body_mass < 18.5 %>
+            <td>Underweight</td>
+           <% elsif consult.body_mass > 18.5 and consult.body_mass < 25 %>
+            <td>Normal</td>
+           <% elsif consult.body_mass > 25 and consult.body_mass < 30%>
+            <td>Overweight</td>
+           <% elsif consult.body_mass > 30 and consult.body_mass < 35 %>
+            <td>Obese Class I</td>
+           <% elsif consult.body_mass > 35 and consult.body_mass < 40%>
+            <td>Obese Class II</td>
+           <% elsif consult.body_mass > 40 %>
+            <td>Obese Class III</td>
+           <% end %>
           </tr>
         <% end %>
+
     </div>
 </div>
