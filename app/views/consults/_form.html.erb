@@ -1,30 +1,27 @@
-<div class="container">
-  <div class="row">
-    <h3>New consult</h3>
-    <%= form_for(@consult) do |f| %>
-    <div class="row">
-      <div class="col-md-6">
-       <div class="form=group">
-         <%= f.text_field :height, placeholder: "Height", type: "number", min:"0", class: "form-control input"%>
-       </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form=group">
-          <%= f.text_field :mass , placeholder: "Mass", type: "number", min:"0", class: "form-control input" %>
-        </div>
-      </div>
-    </div>
-    <div class= "row">
-      <div class= "col=md=12">
-        <%= f.submit class: "btn btn-secondary pull-right"%>
-        <p id ="mass_body"></p>
-      </div>
-    </div>
-    <% end %>
+  <div class="row center">
+    <h4>New consult</h4>
+    <hr>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 ">
+    		<div class="panel panel-default border-panel">
+			  	<div class="panel-body">
+              <%= form_for(@consult) do |f| %>
+                <fieldset>
+			    	  <div class="form-group">
+                <%= f.text_field :height, placeholder: "Height (cm)", type: "number", min:"1", class: "input alingh form-control"%>
+			    		</div>
+			    		<div class="form-group">
+                <%= f.text_field :mass , placeholder: "Weight (kg)", type: "number", min:"1", class: "input form-control" %>
+			    		</div>
+              <%= f.submit "Calculate BMI",  class: "btn btn-secondary"%>
+			    	</fieldset>
+			        <% end %>
+			    </div>
+			</div>
+		</div>
+	</div>
   </div>
-</div>
+
 
 
 
