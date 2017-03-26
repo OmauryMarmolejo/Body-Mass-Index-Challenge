@@ -1,12 +1,10 @@
 class ConsultsController < ApplicationController
-<<<<<<< HEAD
-end
-=======
 include ConsultsHelper
 #before_action :find_consults, only: [:edit, :update, :show, :delete]
 before_action :authenticate_user!
   def index
     @consults = current_user.consult
+    @consult= Consult.new
   end
 
   def new
@@ -22,7 +20,7 @@ before_action :authenticate_user!
     calculate
     if @consult.save
       redirect_to root_path
-    else
+      else
       render 'new'
     end
   end
@@ -44,4 +42,3 @@ before_action :authenticate_user!
 
 end
 
->>>>>>> feature/consults
