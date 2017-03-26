@@ -5,4 +5,5 @@ class User < ApplicationRecord
   attr_accessor :username
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates_presence_of :email, :password
 end
