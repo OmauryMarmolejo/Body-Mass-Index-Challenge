@@ -18,6 +18,7 @@ before_action :authenticate_user!
   def create
     @consult = current_user.consult.new(consult_params)
     calculate
+    define_category
     if @consult.save
       redirect_to root_path
       else

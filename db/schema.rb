@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326120155) do
+ActiveRecord::Schema.define(version: 20170330164054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170326120155) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "{:foreign_key=>true}_id"
+    t.string "category"
     t.index ["{:foreign_key=>true}_id"], name: "index_consults_on_{:foreign_key=>true}_id"
   end
 
