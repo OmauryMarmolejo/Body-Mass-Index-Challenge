@@ -15,5 +15,7 @@
 //= require_tree .
 //= require bootstrap-sprockets
 //
-
-
+function getCategory(body_mass){
+  var bodyMass = body_mass;
+  console.log(bodyMass);
+};
