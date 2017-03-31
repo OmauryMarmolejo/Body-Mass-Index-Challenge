@@ -3,12 +3,15 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'spec_helper'
 require 'rspec/rails'
+require 'spec_helper'
+require 'capybara/rspec'
 require 'shoulda/matchers'
-require 'database_cleaner'
+require 'support/database_cleaner'
 require 'devise'
 require 'support/factory_girl'
+require 'support/user_helper'
+require 'support/devise'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -36,11 +39,35 @@ ActiveRecord::Migration.maintain_test_schema!
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
   config.include Capybara::DSL
+  config.include UserControllerHelper, :type => :controller
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
+  config.include UserHelper
+  config.include Warden::Test::Helpers
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   # RSpec Rails can automatically mix in different behaviours to your tests
+  config.use_transactional_fixtures = false
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #

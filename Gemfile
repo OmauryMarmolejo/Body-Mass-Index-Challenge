@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'simplecov', :require => false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0.rc1'
 # Use sqlite3 as the database for Active Record
@@ -51,6 +51,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
   gem 'faker'
+  gem 'warden', '~> 1.2', '>= 1.2.3'
 end
 
 group :development do
